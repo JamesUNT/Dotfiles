@@ -16,10 +16,6 @@ call plug#end()
 
 " ----------------------------------
 
-" status bar configuration:
-
-" ----------------------------------
-
 " NERDTree configurations:
 
 " Automatically sets the current working directory to the present file
@@ -27,18 +23,18 @@ call plug#end()
 let NERDTreeChDirMode=2
 
 " Automatically open NERDTree if it's not already open when a new tab is opened
-autocmd TabEnter * if !exists("g:NERDTree") | NERDTree | endif
+" or when switch tabs:
+autocmd VimEnter * NERDTree
+autocmd TabEnter * NERDTreeMirror | call FocusNonNERDTreeWindow()
+autocmd TabLeave * call FocusNonNERDTreeWindow()
 
-" Ensure NERDTree opens automatically when you open a new tab via NERDTree's 't'
-" and set it to the left side of the window and configure the size of the
-" NERDTree window.
-autocmd TabNew * NERDTree | wincmd H | wincmd p | execute 'vertical resize'.( &columns - NERDTreeWinSize - 1)
 
-" Custom mappings for switching tabs with focus on the window next to NERDTree
-function! FocusNextToNERDTree()
-  " Focus the next window to the NERDTree window
-  " Assuming NERDTree is in one of the windows, this will focus the next window
-  wincmd w
+function! FocusNonNERDTreeWindow()
+    " Check if the current window is NERDTree
+    if &filetype == 'nerdtree'
+        " Move to the next window if it is NERDTree
+        wincmd w
+    endif
 endfunction
 
 
@@ -47,9 +43,9 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 " Toggle tree:
 nnoremap <C-t> :NERDTreeToggle<CR>
 " Move to the next tab:
-nnoremap <leader>] :tabnext<CR>:call FocusNextToNERDTree()<CR>
+nnoremap <leader>] :tabnext<CR>
 " Move to the previous tab:
-nnoremap <leader>[ :tabprevious<CR>:call FocusNextToNERDTree()<CR>
+nnoremap <leader>[ :tabprevious<CR>
 " Close current tab:
 nnoremap <leader>c :tabclose<CR>
 
