@@ -1,7 +1,7 @@
-" Plugins configuration for vim aaaaaaaa
+" Plugins configuration for vim: 
 call plug#begin()
 
-" List your plugins here
+" List your plugins here:
 Plug 'pangloss/vim-javascript'    " JavaScript support
 Plug 'leafgarland/typescript-vim' " TypeScript syntax
 Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
@@ -24,7 +24,7 @@ let NERDTreeChDirMode=2
 
 " Automatically open NERDTree if it's not already open when a new tab is opened
 " or when switch tabs:
-autocmd VimEnter * NERDTree
+autocmd VimEnter * NERDTree | call FocusNonNERDTreeWindow()
 autocmd TabEnter * NERDTreeMirror | call FocusNonNERDTreeWindow()
 autocmd TabLeave * call FocusNonNERDTreeWindow()
 
@@ -37,6 +37,7 @@ function! FocusNonNERDTreeWindow()
     endif
 endfunction
 
+" keymaps configuratons:
 
 " Focus on nerdtree:
 nnoremap <leader>n :NERDTreeFocus<CR>
