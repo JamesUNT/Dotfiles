@@ -18,17 +18,6 @@ call plug#end()
 
 " NERDTree configurations:
 
-" Automatically sets the current working directory to the present file
-" that the cursor is located on:
-let NERDTreeChDirMode=2
-
-" Automatically open NERDTree if it's not already open when a new tab is opened
-" or when switch tabs:
-autocmd VimEnter * NERDTree | call FocusNonNERDTreeWindow()
-autocmd TabEnter * NERDTreeMirror | call FocusNonNERDTreeWindow()
-autocmd TabLeave * call FocusNonNERDTreeWindow()
-
-
 function! FocusNonNERDTreeWindow()
     " Check if the current window is NERDTree
     if &filetype == 'nerdtree'
@@ -36,6 +25,17 @@ function! FocusNonNERDTreeWindow()
         wincmd w
     endif
 endfunction
+
+" Automatically sets the current working directory to the present file
+" that the cursor is located on:
+let NERDTreeChDirMode=2
+
+" Automatically open NERDTree if it's not already open when a new tab is opened
+" or when switch tabs:
+autocmd VimEnter * NERDTree | call FocusNonNERDTreeWindow() | :set number
+autocmd TabEnter * NERDTreeMirror | call FocusNonNERDTreeWindow()
+autocmd TabLeave * call FocusNonNERDTreeWindow()
+
 
 " keymaps configuratons:
 
