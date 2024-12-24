@@ -10,7 +10,7 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				-- installing LSPs:
-				ensure_installed = { "lua_ls", "ts_ls", "volar" },
+				ensure_installed = { "lua_ls", "volar" },
 			})
 		end,
 	},
