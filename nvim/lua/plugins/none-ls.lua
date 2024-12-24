@@ -1,5 +1,5 @@
 return {
-  -- wraps linters and formaters as a vim LSP, making it easir to manage with Mason.
+  -- wraps linters and formaters as a vim LSP, making it easier to manage with Mason.
   "nvimtools/none-ls.nvim",
   dependencies = {
     "nvimtools/none-ls-extras.nvim",
@@ -7,6 +7,7 @@ return {
   config = function()
     local null_ls = require("null-ls")
     null_ls.setup({
+      debug = true,
       sources = {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.prettierd,
