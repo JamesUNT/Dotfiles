@@ -1,3 +1,6 @@
+-- Este arquivo se trata da configuracao dos protocolos de servidores de linguagem (LSP),
+-- nele, foi configurado o gerenciador de LSPs "Mason" e plugins de suporte para melhor
+-- integrar os LSPs com ele.
 return {
 	{
 		"williamboman/mason.nvim",
